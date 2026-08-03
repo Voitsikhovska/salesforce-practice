@@ -8,7 +8,6 @@ trigger OpportunityTrigger on Opportunity (
         return;
     }
 
-    // 🔥 ВАЛІДАЦІЯ СТЕЙДЖУ
     if (Trigger.isBefore && Trigger.isUpdate) {
         OpportunityHandler.validateStageChange(
             Trigger.new,
@@ -16,7 +15,6 @@ trigger OpportunityTrigger on Opportunity (
         );
     }
 
-    // 🔧 AFTER логіка
     if (Trigger.isAfter && Trigger.isUpdate) {
         OpportunityTriggerHandler.handleAfterUpdate(
             Trigger.new,

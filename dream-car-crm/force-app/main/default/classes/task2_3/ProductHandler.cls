@@ -7,7 +7,6 @@ public class ProductHandler {
         Map<Id, Product2> oldMap
     ) {
 
-        // 🚫 STOP recursion
         if (isRunning) return;
         isRunning = true;
 
