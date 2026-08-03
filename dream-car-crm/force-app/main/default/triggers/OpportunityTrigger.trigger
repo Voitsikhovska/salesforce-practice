@@ -1,4 +1,5 @@
 trigger OpportunityTrigger on Opportunity (
+    before update,
     after update,
     after delete
 ) {
@@ -7,23 +8,25 @@ trigger OpportunityTrigger on Opportunity (
         return;
     }
 
+    // 🔥 ВАЛІДАЦІЯ СТЕЙДЖУ
+    if (Trigger.isBefore && Trigger.isUpdate) {
+        OpportunityHandler.validateStageChange(
+            Trigger.new,
+            Trigger.oldMap
+        );
+    }
 
-    if (Trigger.isUpdate) {
-
+    // 🔧 AFTER логіка
+    if (Trigger.isAfter && Trigger.isUpdate) {
         OpportunityTriggerHandler.handleAfterUpdate(
             Trigger.new,
             Trigger.oldMap
         );
-
     }
 
-
-    if (Trigger.isDelete) {
-
+    if (Trigger.isAfter && Trigger.isDelete) {
         OpportunityTriggerHandler.handleAfterDelete(
             Trigger.old
         );
-
     }
-
 }
