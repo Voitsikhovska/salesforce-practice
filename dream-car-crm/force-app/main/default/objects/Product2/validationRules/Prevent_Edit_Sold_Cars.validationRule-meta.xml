@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Edit_Sold_Cars</fullName>
+    <active>true</active>
+    <description>Only Sales Manager and System Administrator can edit sold cars.</description>
+    <errorConditionFormula>AND(
+    RecordType.DeveloperName = &quot;Sold&quot;,
+    NOT($Profile.Name = &quot;System Administrator&quot;),
+    NOT($Profile.Name = &quot;Sales Manager&quot;)
+)</errorConditionFormula>
+    <errorMessage>You cannot edit sold cars. Only Sales Manager and System Administrator can modify sold car records.</errorMessage>
+</ValidationRule>
