@@ -1,0 +1,127 @@
+<apex:page controller="ContactServicesPDFPrintController"
+    renderAs="pdf"
+    showHeader="false"
+    sidebar="false"
+    standardStylesheets="false"
+    applyBodyTag="false"
+    applyHtmlTag="false">
+
+<html>
+<head>
+<style type="text/css">
+    @page {
+        margin-top: 110px;
+        margin-bottom: 60px;
+        @top-left {
+            content: element(pageHeader);
+        }
+        @bottom-right {
+            content: element(pageFooter);
+        }
+    }
+
+    div.pageHeader {
+        position: running(pageHeader);
+    }
+
+    div.pageFooter {
+        position: running(pageFooter);
+        font-size: 10px;
+        font-family: Arial, sans-serif;
+        color: #666666;
+    }
+
+    .pageNumber:before { content: counter(page); }
+    .totalPages:before { content: counter(pages); }
+
+    body {
+        font-family: Arial, sans-serif;
+        color: #333333;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 24px;
+        color: #1a1a1a;
+        border-bottom: 2px solid #cccccc;
+        padding-bottom: 10px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .record-wrapper {
+        margin-bottom: 18px;
+        border: 1px solid #dddddd;
+        padding: 4px 0;
+    }
+
+    .record-break {
+        page-break-after: always;
+    }
+
+    .detailList {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .detailList td.labelCol {
+        font-weight: bold;
+        font-size: 12px;
+        padding: 8px 12px;
+        vertical-align: top;
+        width: 30%;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .detailList td.dataCol {
+        font-size: 12px;
+        padding: 8px 12px;
+        vertical-align: top;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .pbHeader {
+        background-color: #eaeaea;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 8px 12px;
+    }
+
+    .pbSubsection {
+        margin-bottom: 16px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="pageHeader">
+        <img class="logo" src="{!$Resource.CompanyLogo}"/>
+    </div>
+
+    <div class="pageFooter">
+        Page <span class="pageNumber"/> of <span class="totalPages"/>
+    </div>
+
+    <h1>
+        <apex:outputText value="{!$Label.Services_For_Contact_Title}">
+            <apex:param value="{!contactRecord.Name}"/>
+        </apex:outputText>
+    </h1>
+
+    <apex:repeat value="{!services}" var="service">
+        <div class="record-wrapper">
+            <apex:detail subject="{!service}" relatedList="false" title="false" showChatter="false"/>
+        </div>
+        <p class="record-break"></p>
+    </apex:repeat>
+
+</body>
+</html>
+
+</apex:page>

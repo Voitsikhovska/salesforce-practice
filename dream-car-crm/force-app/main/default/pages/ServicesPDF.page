@@ -1,0 +1,26 @@
+<apex:page standardController="Contact" extensions="ContactServicesPDFController" docType="html-5.0">
+
+<apex:form>
+    <apex:pageMessages />
+    <apex:pageBlock title="Generate Services PDF">
+        <apex:pageBlockSection columns="1">
+
+            <apex:outputLabel value="Record Type" for="rt"/>
+            <apex:selectList id="rt" value="{!selectedRecordTypeId}" size="1">
+                <apex:selectOptions value="{!recordTypes}"/>
+            </apex:selectList>
+
+            <apex:outputLabel value="Start Date" for="sd"/>
+            <apex:input id="sd" type="date" value="{!startDate}"/>
+
+            <apex:outputLabel value="End Date" for="ed"/>
+            <apex:input id="ed" type="date" value="{!endDate}"/>
+
+            <apex:outputLabel value="Save PDF as Contact File" for="saveCb"/>
+            <apex:inputCheckbox id="saveCb" value="{!saveAsFile}"/>
+
+        </apex:pageBlockSection>
+
+        <apex:commandButton value="Generate PDF" action="{!generatePDF}"/>
+    </apex:pageBlock>
+</apex:form>
