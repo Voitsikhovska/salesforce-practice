@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Cars - Car Service Appointment</title>
+</head>
+
+<body>
+
+<h1>Car Service Appointment</h1>
+
+<form
+    action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dfj00000XIejx"
+    method="POST">
+
+    <!-- Salesforce Org ID -->
+    <input type="hidden" name="orgid" value="00Dfj00000XIejx">
+
+    <!-- Page to return to after submission -->
+    <input type="hidden" name="retURL" value="https://google.com">
+
+    <!-- Case Origin -->
+    <input type="hidden" name="origin" value="Web Car Service">
+
+    <!-- Debug mode: shows/sends the real error if Case creation fails -->
+    <input type="hidden" name="debug" value="1">
+    <input type="hidden" name="debugEmail" value="daravojka505@gmail.com">
+
+    <!-- Name -->
+    <label for="name">Name</label>
+    <input
+        id="name"
+        maxlength="80"
+        name="name"
+        size="20"
+        type="text">
+    <br><br>
+
+    <!-- Email -->
+    <label for="email">Email</label>
+    <input
+        id="email"
+        maxlength="80"
+        name="email"
+        size="20"
+        type="email">
+    <br><br>
+
+    <!-- Phone -->
+    <label for="phone">Phone</label>
+    <input
+        id="phone"
+        maxlength="40"
+        name="phone"
+        size="20"
+        type="text">
+    <br><br>
+
+    <!-- Car VIN Code -->
+    <label for="carVin">Car VIN Code</label>
+    <input
+        id="carVin"
+        maxlength="50"
+        name="00Nfj00004Vpj41"
+        size="20"
+        type="text">
+    <br><br>
+
+    <!-- Car Brand -->
+    <label for="carBrand">Car Brand</label>
+    <input
+        id="carBrand"
+        maxlength="100"
+        name="00Nfj00004Vo9Na"
+        size="20"
+        type="text">
+    <br><br>
+
+    <!-- Car Model -->
+    <label for="carModel">Car Model</label>
+    <input
+        id="carModel"
+        maxlength="100"
+        name="00Nfj00004VpUky"
+        size="20"
+        type="text">
+    <br><br>
+
+    <!-- Reason -->
+    <label for="subject">Reason</label>
+    <input
+        id="subject"
+        maxlength="255"
+        name="subject"
+        size="20"
+        type="text">
+    <br><br>
+
+    <!-- Description -->
+    <label for="description">Description</label>
+    <textarea
+        id="description"
+        name="description"
+        rows="5"
+        cols="40"></textarea>
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
