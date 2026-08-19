@@ -1,0 +1,127 @@
+<template>
+    <lightning-card title="Vehicle Information" icon-name="standard:vehicle_360">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+
+            <lightning-input
+                label="Vehicle Id"
+                value={vehicleId}
+                onchange={handleVehicleIdChange}
+                placeholder="Enter SmartCar Vehicle Id"
+                class="slds-m-bottom_small">
+            </lightning-input>
+
+            <lightning-input
+                label="SmartCar User Id"
+                value={scUserId}
+                onchange={handleScUserIdChange}
+                placeholder="Enter SmartCar User Id (from SmartCar Connect)"
+                field-level-help="Required on every request — the SmartCar V3 access token is application-level, so this Id tells SmartCar which user's vehicle to look up."
+                class="slds-m-bottom_small">
+            </lightning-input>
+
+            <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-button
+                        variant="brand"
+                        label="Get Vehicle Info"
+                        icon-name="utility:info"
+                        class="slds-size_1-of-1"
+                        onclick={handleFetchInfoClick}
+                        disabled={isFetchDisabled}>
+                    </lightning-button>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-button
+                        variant="neutral"
+                        label="Get Location"
+                        icon-name="utility:location"
+                        class="slds-size_1-of-1"
+                        onclick={handleFetchLocationClick}
+                        disabled={isFetchDisabled}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <template if:true={isLoading}>
+                <div class="slds-align_absolute-center slds-p-vertical_small slds-is-relative" style="min-height: 2rem;">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <lightning-icon icon-name="utility:error" size="x-small" variant="inverse" class="slds-m-right_x-small"></lightning-icon>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+
+           <template if:true={hasVehicleInfo}>
+    <div class="slds-box slds-theme_default slds-m-top_small vehicle-details">
+
+        <dl class="slds-list_horizontal slds-wrap">
+
+            <dt class="slds-item_label slds-text-color_weak slds-truncate">
+                Make:
+            </dt>
+            <dd class="slds-item_detail slds-truncate">
+                {make}
+            </dd>
+
+            <dt class="slds-item_label slds-text-color_weak slds-truncate">
+                Model:
+            </dt>
+            <dd class="slds-item_detail slds-truncate">
+                {model}
+            </dd>
+
+            <dt class="slds-item_label slds-text-color_weak slds-truncate">
+                Year:
+            </dt>
+            <dd class="slds-item_detail slds-truncate">
+                {year}
+            </dd>
+
+            <dt class="slds-item_label slds-text-color_weak slds-truncate">
+                Powertrain Type:
+            </dt>
+            <dd class="slds-item_detail slds-truncate">
+                {powertrainType}
+            </dd>
+
+        </dl>
+
+    </div>
+</template>
+<template if:true={hasLocation}>
+    <div class="slds-box slds-theme_default slds-m-top_small">
+
+        <div class="slds-grid slds-wrap">
+
+            <div class="slds-size_1-of-1 slds-m-bottom_small">
+                <span class="slds-text-title">Vehicle Location</span>
+            </div>
+
+            <div class="slds-size_1-of-2">
+                <span class="slds-text-color_weak">Latitude:</span>
+            </div>
+
+            <div class="slds-size_1-of-2">
+                {latitude}
+            </div>
+
+            <div class="slds-size_1-of-2">
+                <span class="slds-text-color_weak">Longitude:</span>
+            </div>
+
+            <div class="slds-size_1-of-2">
+                {longitude}
+            </div>
+
+        </div>
+
+    </div>
+</template>
+        </div>
+    </lightning-card>
+</template>
