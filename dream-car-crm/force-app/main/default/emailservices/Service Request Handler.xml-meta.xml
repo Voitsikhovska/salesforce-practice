@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailServicesFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apexClass>ServiceRequestEmailHandler</apexClass>
+    <attachmentOption>All</attachmentOption>
+    <authenticationFailureAction>Discard</authenticationFailureAction>
+    <authorizationFailureAction>Discard</authorizationFailureAction>
+    <emailServicesAddresses>
+        <authorizedSenders>daravojka505@gmail.com</authorizedSenders>
+        <developerName>Daryna_Email_Address</developerName>
+        <isActive>true</isActive>
+        <localPart>service_request_handler</localPart>
+        <runAsUser>daravojka505.df45d7c5225c@agentforce.com</runAsUser>
+    </emailServicesAddresses>
+    <functionInactiveAction>Discard</functionInactiveAction>
+    <functionName>Service Request Handler</functionName>
+    <isActive>true</isActive>
+    <isAuthenticationRequired>false</isAuthenticationRequired>
+    <isErrorRoutingEnabled>false</isErrorRoutingEnabled>
+    <isTextAttachmentsAsBinary>false</isTextAttachmentsAsBinary>
+    <isTlsRequired>false</isTlsRequired>
+    <overLimitAction>Discard</overLimitAction>
+</EmailServicesFunction>
