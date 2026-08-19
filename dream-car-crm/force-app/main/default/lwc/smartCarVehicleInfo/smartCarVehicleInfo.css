@@ -1,0 +1,9 @@
+.vehicle-details dt {
+    width: 40%;
+    font-weight: 600;
+}
+
+.vehicle-details dd {
+    width: 60%;
+    margin-bottom: 0.5rem;
+}
